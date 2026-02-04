@@ -1,1 +1,11 @@
-/* styles for repository homepage from TP2
+/* styles for repository homepage from TP2*/
+
+* {
+    box-sizing: border-box;
+}
+
+h1
+h2 {
+    text-transform: uppercase;
+}
+
