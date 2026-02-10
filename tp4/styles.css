@@ -5,12 +5,12 @@
 /* The :root selector is used to define CSS variables that can be reused */
 :root {
     /* Tic Tac Toe sizing */
-    --gameBoardSize: 60vmin;
+    --gameBoardSize: 80vmin;
     --gameBoardSpacer: 8px;
     --cellSize: calc((var(--gameBoardSize) - (2 * var(--gameBoardSpacer))) / 3);
 
     /* style */
-    --boardColor: #767676; 
+    --boardColor: #d5add7; 
     --cellBackground: #ffffff;
     --xColor: #F52798;
     --oColor: #1E90FF;
@@ -21,8 +21,10 @@
     position: relative;
     width: var(--gameBoardSize);
     height: var(--gameBoardSize);
-    background-color: black;
-
+    max-width: 90%;
+    max-height: 90%;
+    margin: 0 auto;
+    background-color: var(--boardColor);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -40,7 +42,7 @@
 
 /* The .gameSpace class is used for each of the 9 spaces on the tic-tac-toe board. */
 .gameSpace {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--cellBackground);
     position: relative;
     font-size: 10rem;
     text-transform: uppercase;
@@ -54,7 +56,16 @@
 
 /* adds hover effect to the game spaces */
 .gameSpace:hover {
-    background-color: #f0e6d8;
+    background-color: #d2d2d2;
+}
+
+/* h1 styling for the title of the page */
+h1 {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #4b3621;
+    margin-bottom: 30px;
+    font-size: 3rem;
 }
 
 /* The @media rule is used to apply different styles for different screen sizes. In this case, it adjusts the game board size and font size for smaller screens (max-width: 600px). */
