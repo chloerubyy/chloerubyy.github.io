@@ -1,5 +1,7 @@
 /* styles for TP4: Tic-Tac-Toe */
 
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Charmonman:wght@400;700&family=Dancing+Script:wght@400..700&family=Dela+Gothic+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&display=swap');
+
 :root {
     --gameBoardSize: 80vh;
     --gameBoardSpacer: 15px;
@@ -20,4 +22,12 @@
 .gameSpace {
     background-color: rgb(255, 255, 255);
     position: relative;
+    font-size: 10rem;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Dancing Script", cursive;
+    overflow: hidden;
 }
