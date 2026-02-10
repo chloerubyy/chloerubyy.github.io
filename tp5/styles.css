@@ -1,1 +1,114 @@
 /* styles for concentration board */
+
+* {
+    box-sizing: border-box;
+}
+
+/* to achieve the flipping effect */
+
+:root {
+  --cardSize: 40vw; /* size of the card */
+}
+
+/* general card styles */
+
+.card {
+    position: relative;
+    width: var(--cardSize);
+    height: var(--cardSize);
+    perspective: 500px; /* perspective for 3D effect */
+    margin-bottom: 1rem;
+}
+
+.cardContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s; /* smooth flipping */
+    transform-style: preserve-3d; /* enable 3D transformations */
+}
+
+.card:hover .cardContent {
+    transform: rotateY(180deg); /* flip the card on hover */
+}
+
+.cardTop,
+.cardBottom {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid darkblue;
+    font-size: 42px;
+    backface-visibility: hidden; /* hide the back face when flipped */
+}
+
+.cardTop {
+    background-color: darkblue;
+    color: #eee;
+}
+
+.cardBottom {
+    background-color: #eee;
+    color: darkblue;
+    transform: rotateY(180deg); /* position the back face */
+}
+
+/* specific styles for each pair of cards */
+
+.pair1 .cardBottom {
+    background-color: red;
+}
+
+.pair2 .cardBottom {
+    background-color: green;
+}
+
+.pair3 .cardBottom {
+    background-color: yellow;
+}
+
+.pair4 .cardBottom {
+    background-color: cyan;
+}
+
+.pair5 .cardBottom {
+    background-color: magenta;
+}
+
+.pair6 .cardBottom {
+    background-color: orange;
+}
+
+.pair7 .cardBottom {
+    background-color: purple;
+}
+
+.pair8 .cardBottom {
+    background-color: brown;
+}
+
+/* layout for the board */
+
+#gameBoard {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 100vw;
+}
+
+@media screen and (orientation: landscape) {
+        
+    :root {
+        --cardSize: 20vw; /* smaller cards for landscape orientation */
+    }
+
+    #gameBoard {
+        grid-template-columns: 1fr 1fr 1fr 1fr; /* more columns for landscape */
+        grid-template-rows: 1fr 1fr; /* fewer rows for landscape */
+    }
+
+}
+    
