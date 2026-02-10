@@ -2,13 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Charmonman:wght@400;700&family=Dancing+Script:wght@400..700&family=Dela+Gothic+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&display=swap');
 
-/* The :root selector is used to define CSS variables that can be reused throughout the stylesheet. */
+/* The :root selector is used to define CSS variables that can be reused */
 :root {
-    :root {
+    /* Tic Tac Toe sizing */
     --gameBoardSize: 60vmin;
     --gameBoardSpacer: 8px;
-    --boardColor: #313788; 
+    --cellSize: calc((var(--gameBoardSize) - (2 * var(--gameBoardSpacer))) / 3);
+
+    /* style */
+    --boardColor: #767676; 
     --cellBackground: #ffffff;
+    --xColor: #F52798;
+    --oColor: #1E90FF;
 }
 
 /* The #gameBoard id is used for the tic-tac-toe board itself. */
@@ -22,6 +27,15 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: var(--gameBoardSpacer);
+}
+
+/* added differentiating colors to letters */
+.x {
+    color: var(--xColor);
+}
+
+.o {
+    color: var(--oColor);
 }
 
 /* The .gameSpace class is used for each of the 9 spaces on the tic-tac-toe board. */
