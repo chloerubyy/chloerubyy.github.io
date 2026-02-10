@@ -4,8 +4,11 @@
 
 /* The :root selector is used to define CSS variables that can be reused throughout the stylesheet. */
 :root {
-    --gameBoardSize: 80vh;
-    --gameBoardSpacer: 15px;
+    :root {
+    --gameBoardSize: 60vmin;
+    --gameBoardSpacer: 8px;
+    --boardColor: #313788; 
+    --cellBackground: #ffffff;
 }
 
 /* The #gameBoard id is used for the tic-tac-toe board itself. */
@@ -33,4 +36,20 @@
     justify-content: center;
     font-family: "Dancing Script", cursive;
     overflow: hidden;
+}
+
+/* adds hover effect to the game spaces */
+.gameSpace:hover {
+    background-color: #f0e6d8;
+}
+
+/* The @media rule is used to apply different styles for different screen sizes. In this case, it adjusts the game board size and font size for smaller screens (max-width: 600px). */
+@media (max-width: 600px) {
+    :root {
+        --gameBoardSize: 90vmin;
+    }
+
+    .gameSpace {
+        font-size: 4rem;
+    }
 }
