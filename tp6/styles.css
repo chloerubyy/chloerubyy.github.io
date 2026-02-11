@@ -1,1 +1,98 @@
 /* styles for weather app */
+
+/* general code for all elements */
+
+:root {
+    --predictionBoxWidth: 70vw;
+    --predicitionBoxHeight: 20vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: dancing script, cursive;
+}
+
+main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightgrey;
+
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 50vh 30vh var(--predicitionBoxHeight);
+    grid-template-areas:
+        'currentInfo    currentInfo'
+        'currentHum     currentWind'
+        'future         future';
+}
+
+/* current info */
+
+#currentInfo {
+    position: relative;
+    grid-area: currentInfo;
+    background-color:aquamarine;
+}
+
+#currentTemp {
+    position: absolute;
+    font-size: 10rem;
+    left: 1rem;
+}
+
+#currentStatus {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+}
+
+/* current humidity */
+
+#currentHumidity {
+    position: relative;
+    grid-area: currentHum;
+    background-color: lightblue;
+}
+
+/* current wind */
+
+#currentWind {
+    position: relative;
+    grid-area: currentWind;
+    background-color: rgb(196, 201, 208);
+}
+
+/* future info */
+
+#futureInfo {
+    position: relative;
+    grid-area: future;
+    background-color: rgb(223, 241, 179);
+    overflow: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#futureInfo::-webkit-scrollbar { display: none; }
+
+.futureDay {
+    position: absolute;
+    width: var(--predictionBoxWidth);
+    height: var(--predicitionBoxHeight);
+}
+
+.futureDay:nth-child(2) {
+    left: var(--predictionBoxWidth)
+}
+
+.futureDay:nth-child(3) {
+    left: calc(var(--predictionBoxWidth) * 2);
+}
