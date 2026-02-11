@@ -1,52 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiny Project 6: Weather App</title>
-
-    <link rel="stylesheet" href="styles.css" media="all">
-
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
-
 </head>
 
 <body>
-
+    
     <main>
+
+        <!-- LEFT SIDE -->
         <div id="currentInfo">
-            <div id="currentTemp">76°F</div>
-            <div id="currentStatus">Sunny</div>
+            <h1 id="tpTitle">Tiny Project 6: Layout for Weather App</h1>
+            <div id="currentLocation">Pullman, WA</div>
+            <img src="images/pullman.jpg" alt="Pullman Weather" class="currentWeatherImage">
+            <div id="currentTemp">36°F</div>
+            <div id="currentStatus">
+                <img src="images/partly-cloudy.png" alt="Partly Cloudy" class="weatherIcon">
+                Partly Cloudy
+            </div>
         </div>
 
-        <div id="currentHumiditiy">32%</div>
+        <!-- RIGHT SIDE TOP -->
+        <div id="topRight">
+            <div id="currentHumidity">
+                Humidity: 73%
+            </div>
 
-        <div id="currentWind">5 mph NNW</div>
+            <div id="currentWind">
+                Wind: 6 mph <span class="windArrow">➤</span> E
+            </div>
+        </div>
 
         <div id="futureInfo">
             <div class="futureDay">
-                <div class="futureTemp">72°F</div>
-                <div class="futureWind">3 mph W</div>
-                <div class="futureStatus">Cloudy</div>
-            </div>
-            <div class="futureDay">
-                <div class="futureTemp">72°F</div>
-                <div class="futureWind">3 mph W</div>
-                <div class="futureStatus">Cloudy</div>
-            </div>
-            <div class="futureDay">
-                <div class="futureTemp">72°F</div>
-                <div class="futureWind">3 mph W</div>
-                <div class="futureStatus">Cloudy</div>
+                <div class="dayName">Monday</div>
+                <div class="futureTemp">48°F</div>
+                <div class="futureWind">1-6 mph</div>
+                <div class="futureStatus">
+                    <img src="images/sunny.png" alt="Sunny" class="weatherIcon">
+                    Sunny
+                </div>
             </div>
 
+            <div class="futureDay">
+                <div class="dayName">Tuesday</div>
+                <div class="futureTemp">46°F</div>
+                <div class="futureWind">2-5 mph</div>
+                <div class="futureStatus">
+                    <img src="images/cloudy.png" alt="Cloudy" class="weatherIcon">
+                    Cloudy
+                </div>
+            </div>
+
+            <div class="futureDay">
+                <div class="dayName">Wednesday</div>
+                <div class="futureTemp">45°F</div>
+                <div class="futureWind">3-6 mph</div>
+                <div class="futureStatus">
+                    <img src="images/cloudy.png" alt="Cloudy" class="weatherIcon">
+                    Cloudy
+                </div>
+            </div>
         </div>
+
     </main>
-
-
 </body>
 
 </html>

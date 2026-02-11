@@ -5,27 +5,27 @@ let offsetLeftStart;
 let scrollLeftStart;
 let isMoving;
 
-document .addEventListener("DOMContentLoaded", function() {
-    scrollingBox= document.querySelector("#futureInfo");
+document.addEventListener("DOMContentLoaded", function () {
+    scrollingBox = document.querySelector("#futureInfo");
     isMoving = false;
 
-    scrollingBox.addEventListener("mousedown", function(e) {
+    scrollingBox.addEventListener("mousedown", function (e) {
         scrollLeftStart = scrollingBox.scrollLeft;
         offsetLeftStart = e.pageX - scrollingBox.offsetLeft;
         isMoving = true;
     });
 
-    scrollingBox.addEventListener("mouseleave", function(e) {
+    scrollingBox.addEventListener("mouseleave", function () {
         isMoving = false;
     });
 
-    scrollingBox.addEventListener("mouseup", function(e) {
+    scrollingBox.addEventListener("mouseup", function () {
         isMoving = false;
     });
 
-    scrollingBox.addEventListener("mousemove", function(e) {
+    scrollingBox.addEventListener("mousemove", function (e) {
         e.preventDefault();
-        if (isMoving) return;{
+        if (!isMoving) return;
         scrollingBox.scrollLeft = scrollLeftStart - (e.pageX - offsetLeftStart - scrollingBox.offsetLeft);
     });
 });
