@@ -37,7 +37,8 @@ main {
 #currentInfo {
     position: relative;
     grid-area: currentInfo;
-    background-color:aquamarine;
+    background-color: aquamarine;
+    border-bottom: 1px solid gray;
 }
 
 #currentTemp {
@@ -59,6 +60,7 @@ main {
     position: relative;
     grid-area: currentHum;
     background-color: lightblue;
+    border-right: 1px solid gray;
 }
 
 /* current wind */
@@ -67,6 +69,7 @@ main {
     position: relative;
     grid-area: currentWind;
     background-color: rgb(196, 201, 208);
+    border-bottom: 1px solid gray;
 }
 
 /* future info */
@@ -81,12 +84,15 @@ main {
     -ms-overflow-style: none;
 }
 
-#futureInfo::-webkit-scrollbar { display: none; }
+#futureInfo::-webkit-scrollbar {
+    display: none;
+}
 
 .futureDay {
     position: absolute;
     width: var(--predictionBoxWidth);
     height: var(--predicitionBoxHeight);
+    border-right: 1px solid gray;
 }
 
 .futureDay:nth-child(2) {
@@ -95,4 +101,27 @@ main {
 
 .futureDay:nth-child(3) {
     left: calc(var(--predictionBoxWidth) * 2);
+    border-right: none;
+}
+
+@media screen and (orientation: landscape) {
+
+    :root {
+        --predicitionBoxHeight: calc( 100vh / 3 );
+        --predictionBoxWidth: 30vw;
+    }
+
+    main {
+        grid-template-columns: 60vw 40vw;
+        grid-template-rows: var(--predicitionBoxHeight) var(--predicitionBoxHeight) var(--predicitionBoxHeight);
+        grid-template-areas:
+            'currentInfo    currentHum'
+            'currentInfo    currentWind'
+            'currentInfo    future';
+    }
+
+    #currentInfo {
+        border-bottom: none;
+        border-right: 1px solid white;
+    }
 }
