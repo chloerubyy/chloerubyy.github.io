@@ -4,28 +4,51 @@
     box-sizing: border-box;
 }
 
+/* general styles for the header */
+.pageTitle {
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    font-size: 3rem;
+    color: rgb(215, 138, 222);
+    margin: 1rem 0 2rem 0;
+}
+
 /* to achieve the flipping effect */
 
 :root {
-  --cardSize: 40vw; /* size of the card */
+  --cardGap: 10px; 
+}
+
+/* layout for background and centering the game board */
+
+body {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 /* general card styles */
 
 .card {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* maintain square shape */
+    perspective: 1000px; /* enable 3D perspective for flipping */
+    margin: 0;
+    border-radius: 8px;
+    overflow: visible; /* allow the card to show its content when flipped */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25); /* subtle shadow for depth */
     position: relative;
-    width: var(--cardSize);
-    height: var(--cardSize);
-    perspective: 500px; /* perspective for 3D effect */
-    margin-bottom: 1rem;
 }
 
 .cardContent {
-    position: absolute;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s; /* smooth flipping */
-    transform-style: preserve-3d; /* enable 3D transformations */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s; /* smooth flip animation */
 }
 
 .card:hover .cardContent {
@@ -35,16 +58,20 @@
 .cardTop,
 .cardBottom {
     position: absolute;
-    text-align: center;
+    display: flex;
     width: 100%;
     height: 100%;
-    border: 2px solid darkblue;
-    font-size: 42px;
+    top: 0;
+    left: 0;
+    border: 2px solid rgb(118, 221, 255);
     backface-visibility: hidden; /* hide the back face when flipped */
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
 .cardTop {
-    background-color: darkblue;
+    background-color: rgb(215, 138, 222);
     color: #eee;
 }
 
@@ -52,63 +79,66 @@
     background-color: #eee;
     color: darkblue;
     transform: rotateY(180deg); /* position the back face */
+    background-size: cover; /* ensure the background image covers the card */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* specific styles for each pair of cards */
 
 .pair1 .cardBottom {
-    background-color: red;
+    background-image: url('images/pair1.avif');
 }
 
 .pair2 .cardBottom {
-    background-color: green;
+    background-image: url("images/pair2.jpg");
 }
 
 .pair3 .cardBottom {
-    background-color: yellow;
+    background-image: url("images/pair3.jpg");
 }
 
 .pair4 .cardBottom {
-    background-color: cyan;
+    background-image: url("images/pair4.avif");
 }
 
 .pair5 .cardBottom {
-    background-color: magenta;
+    background-image: url("images/pair5.avif");
 }
 
 .pair6 .cardBottom {
-    background-color: orange;
+    background-image: url("images/pair6.avif");
 }
 
 .pair7 .cardBottom {
-    background-color: purple;
+    background-image: url("images/pair7.jpg");
 }
 
 .pair8 .cardBottom {
-    background-color: brown;
+    background-image: url("images/pair8.avif");
 }
 
 /* layout for the board */
 
 #gameBoard {
-    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
-    width: 100vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: min(90vw, 90vh);
+    height: min(90vw, 90vh);
+    margin: 0 auto;
 }
 
-@media screen and (orientation: landscape) {
-        
+/* media query for smaller screens */
+@media (max-width: 600px) {
     :root {
-        --cardSize: 20vw; /* smaller cards for landscape orientation */
+        --cardSize: min(20vw, 80px);
     }
 
     #gameBoard {
-        grid-template-columns: 1fr 1fr 1fr 1fr; /* more columns for landscape */
-        grid-template-rows: 1fr 1fr; /* fewer rows for landscape */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
     }
-
 }
     
