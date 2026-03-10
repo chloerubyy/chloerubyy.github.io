@@ -59,6 +59,10 @@
     background-color: #d2d2d2;
 }
 
+.gameSpace.clicked {
+    background-color: white;
+}
+
 /* h1 styling for the title of the page */
 h1 {
     text-align: center;
@@ -67,6 +71,21 @@ h1 {
     margin-bottom: 30px;
     font-size: 3rem;
 }
+
+/* styling for the current player display */
+#currentPlayer {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+    color: #4b3621; 
+}
+
+/* makes the current player's letter stand out */
+#currentPlayer span {
+    font-weight: bold; 
+}
+
 
 /* The @media rule is used to apply different styles for different screen sizes. In this case, it adjusts the game board size and font size for smaller screens (max-width: 600px). */
 @media (max-width: 600px) {
@@ -77,4 +96,19 @@ h1 {
     .gameSpace {
         font-size: 4rem;
     }
+}
+
+#gameResult {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(188, 239, 188);
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+    z-index: 1;
+
 }
