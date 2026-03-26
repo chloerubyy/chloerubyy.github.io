@@ -23,12 +23,19 @@
 /* layout for background and centering the game board */
 
 body {
+    font-family: "Sour Gummy", sans-serif;
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+}
+
+.pageTitle,
+#turnCount,
+.winBox {
+    font-family: "Dancing Script", cursive;
 }
 
 /* general card styles */
@@ -49,18 +56,9 @@ body {
     transition: opacity 1s;
 }
 
-.cardContent {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    /* smooth flip animation */
-}
-
-.card.clicked .cardContent {
-    transform: rotateY(180deg);
-    /* flip the card on hover */
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .cardTop,
@@ -95,25 +93,36 @@ body {
     background-position: center;
 }
 
+.card.clicked .cardContent {
+    transform: rotateY(180deg);
+}
+
 .card:hover {
     transform: scale(1.05);
-    transition: transform 0.2s;
     cursor: pointer;
+}
+
+.cardContent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
 
 /* style for matched cards */
 .matched {
     opacity: 0;
     transition-delay: var(--timeDelay);
-    transform: scale(0.8);
 }
 
 /* style for the turn count display */
 #turnCount {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-family: "Dancing Script";
-    color: #444;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: rgb(215, 138, 222);
 }
 
 /* specific styles for each pair of cards */
@@ -167,7 +176,17 @@ body {
     display: none;
 }
 
+#winOverlay {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
 .winBox {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.5rem;
     background: white;
     padding: 2rem;
     border-radius: 16px;
@@ -176,6 +195,7 @@ body {
 }
 
 .winBox button {
+    font-family: "Sour Gummy", sans-serif;
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     border: none;

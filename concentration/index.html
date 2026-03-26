@@ -1,156 +1,152 @@
-<! DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Concentration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
 
-        <!-- external CSS -->
-        <link rel="stylesheet" href="styles.css" media="all">
+<body>
 
-        <!-- link to the JavaScript file -->
-        <script src="scripts.js" defer></script>
+    <h1 class="pageTitle">Concentration Game</h1>
 
-    </head>
-
-    <body>
-
-        <h1 class="pageTitle">Concentration Game</h1>
-
-        <div id="gameBoard">
-
-            <div class="card pair1">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair1">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair2">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair2">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair3">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair3">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair4">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair4">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair5">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair5">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair6">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair6">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair7">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair7">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair8">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
-            <div class="card pair8">
-                <div class="cardContent">
-                    <div class="cardTop"></div>
-                    <div class="cardBottom"></div>
-                </div>
-            </div>
-
+    <div id="winOverlay" class="hidden">
+        <div class="winBox">
+            <h2>You Win!</h2>
+            <p id="finalTurns"></p>
+            <button onclick="location.reload()">Play Again</button>
         </div>
+    </div>
 
-        <div id="turnCount">
-            <p>Turns: <span></span></p>
-        </div>
+    <div id="turnCount">
+        <p>Turns: <span></span></p>
+    </div>
 
-        <div id="winning">
+    <div id="gameBoard">
 
-        </div>
-
-        <div id="winOverlay" class="hidden">
-            <div class="winBox">
-                <h2>You Win!</h2>
-                <p id="finalTurns"></p>
-                <button onclick="location.reload()">Play Again</button>
+        <div class="card pair1">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
             </div>
         </div>
 
-    </body>
+        <div class="card pair1">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
 
-    </html>
+        <div class="card pair2">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair2">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair3">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair3">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair4">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair4">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair5">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair5">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair6">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair6">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair7">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair7">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair8">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+        <div class="card pair8">
+            <div class="cardContent">
+                <div class="cardTop"></div>
+                <div class="cardBottom"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="winning">
+
+    </div>
+
+</body>
+
+</html>

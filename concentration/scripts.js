@@ -59,11 +59,12 @@ function flipCard() {
                 console.log("It's a match!");
                 allClickedCards[0].classList.add("matched");
                 allClickedCards[1].classList.add("matched");
-                window.setTimeout(clearClicks, timeDelay);
 
             } else {
                 console.log("Not a match, try again.");
             }
+
+            window.setTimeout(clearClicks, timeDelay);
 
         }
 
