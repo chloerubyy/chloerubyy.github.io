@@ -17,6 +17,7 @@
 
 :root {
   --cardGap: 10px; 
+  --timeDelay: 1s;
 }
 
 /* layout for background and centering the game board */
@@ -87,7 +88,7 @@ body {
 
 .matched {
     opacity: 0;
-    transition-delay: 2s;
+    transition-delay: var(--timeDelay);
 }
 
 /* specific styles for each pair of cards */
