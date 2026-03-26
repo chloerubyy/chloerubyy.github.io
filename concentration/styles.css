@@ -41,6 +41,7 @@ body {
     overflow: visible; /* allow the card to show its content when flipped */
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25); /* subtle shadow for depth */
     position: relative;
+    transition: opacity 1s;
 }
 
 .cardContent {
@@ -51,7 +52,7 @@ body {
     transition: transform 0.6s; /* smooth flip animation */
 }
 
-.card:hover .cardContent {
+.card.clicked .cardContent {
     transform: rotateY(180deg); /* flip the card on hover */
 }
 
@@ -82,6 +83,11 @@ body {
     background-size: cover; /* ensure the background image covers the card */
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.matched {
+    opacity: 0;
+    transition-delay: 2s;
 }
 
 /* specific styles for each pair of cards */
