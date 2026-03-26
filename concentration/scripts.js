@@ -23,7 +23,9 @@ function clearClicks() {
     if (allCards.length === allMatchedCards.length) {
         // player has matched all cards
         console.log("You win!");
-        document.querySelector("#winning").innerHTML = "You win!";
+        document.querySelector("#winOverlay").classList.remove("hidden");
+        document.querySelector("#finalTurns").innerHTML =
+            "You finished in " + playerClicks + " turns!";
     }
 }
 
@@ -62,9 +64,6 @@ function flipCard() {
             } else {
                 console.log("Not a match, try again.");
             }
-
-            // whether matched or not, clear clicks
-            window.setTimeout(clearClicks, timeDelay);
 
         }
 

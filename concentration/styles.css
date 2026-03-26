@@ -16,8 +16,8 @@
 /* to achieve the flipping effect */
 
 :root {
-  --cardGap: 10px; 
-  --timeDelay: 1s;
+    --cardGap: 10px;
+    --timeDelay: 1s;
 }
 
 /* layout for background and centering the game board */
@@ -35,12 +35,16 @@ body {
 
 .card {
     width: 100%;
-    aspect-ratio: 1 / 1; /* maintain square shape */
-    perspective: 1000px; /* enable 3D perspective for flipping */
+    aspect-ratio: 1 / 1;
+    /* maintain square shape */
+    perspective: 1000px;
+    /* enable 3D perspective for flipping */
     margin: 0;
     border-radius: 8px;
-    overflow: visible; /* allow the card to show its content when flipped */
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25); /* subtle shadow for depth */
+    overflow: visible;
+    /* allow the card to show its content when flipped */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+    /* subtle shadow for depth */
     position: relative;
     transition: opacity 1s;
 }
@@ -50,11 +54,13 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s; /* smooth flip animation */
+    transition: transform 0.6s;
+    /* smooth flip animation */
 }
 
 .card.clicked .cardContent {
-    transform: rotateY(180deg); /* flip the card on hover */
+    transform: rotateY(180deg);
+    /* flip the card on hover */
 }
 
 .cardTop,
@@ -66,7 +72,8 @@ body {
     top: 0;
     left: 0;
     border: 2px solid rgb(118, 221, 255);
-    backface-visibility: hidden; /* hide the back face when flipped */
+    backface-visibility: hidden;
+    /* hide the back face when flipped */
     border-radius: 8px;
     align-items: center;
     justify-content: center;
@@ -80,15 +87,33 @@ body {
 .cardBottom {
     background-color: #eee;
     color: darkblue;
-    transform: rotateY(180deg); /* position the back face */
-    background-size: cover; /* ensure the background image covers the card */
+    transform: rotateY(180deg);
+    /* position the back face */
+    background-size: cover;
+    /* ensure the background image covers the card */
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+/* style for matched cards */
 .matched {
     opacity: 0;
     transition-delay: var(--timeDelay);
+    transform: scale(0.8);
+}
+
+/* style for the turn count display */
+#turnCount {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Dancing Script";
+    color: #444;
 }
 
 /* specific styles for each pair of cards */
@@ -137,6 +162,29 @@ body {
     margin: 0 auto;
 }
 
+/* styles for the winning screen */
+.hidden {
+    display: none;
+}
+
+.winBox {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.winBox button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: rgb(215, 138, 222);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 /* media query for smaller screens */
 @media (max-width: 600px) {
     :root {
@@ -148,4 +196,3 @@ body {
         gap: 6px;
     }
 }
-    
