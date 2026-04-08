@@ -49,7 +49,7 @@ function updateWeather(weatherObject) {
     document.querySelector("#currentStatus").innerHTML =
         `<img src="${weatherObject.current.condition.icon}" class="weatherIcon"> ${weatherObject.current.condition.text}`;
     document.querySelector("#currentHumidity").innerHTML =
-        `Humidity:&nbsp;<span>${weatherObject.current.humidity}</span>%`;
+        `Humidity: ${weatherObject.current.humidity}%`;
 
     // output wind speed and direction in a combined string
     let windspeed = weatherObject.current.wind_mph;
