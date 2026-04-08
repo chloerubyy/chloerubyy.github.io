@@ -29,6 +29,7 @@ main {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     height: 100vh;
+    position: relative;
 }
 
 /* current info */
@@ -41,6 +42,7 @@ main {
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
+    overflow: hidden;
 }
 
 #currentLocation {
@@ -59,6 +61,7 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .weatherIcon {
@@ -66,10 +69,9 @@ main {
 }
 
 .currentWeatherImage {
-    width: 700px;
-    height: auto;
-    margin: 1rem 0;
-    border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 
 #currentHumidity,
@@ -201,10 +203,20 @@ main {
 }
 
 #findLocation {
+    font-family: Merriweather, serif;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 999;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+#findLocation:hover {
+    opacity: 0.8;
 }
 
 body.showModal #modalCover,

@@ -36,39 +36,51 @@ async function getData(url, options) {
 // update weather display in the DOM based on passed object
 function updateWeather(weatherObject) {
 
+    // update location info
+    document.querySelector("#currentLocation").innerHTML =
+        weatherObject.location.name + ", " + weatherObject.location.region;
+
     // outputting whole weather object to console
     console.log(weatherObject);
 
     // update current weather info
     document.querySelector("#currentTemp span").innerHTML = weatherObject.current.temp_f;
+
     document.querySelector("#currentStatus").innerHTML =
         `<img src="${weatherObject.current.condition.icon}" class="weatherIcon"> ${weatherObject.current.condition.text}`;
-    document.querySelector("#currentHumidity span").innerHTML = weatherObject.current.humidity;
+    document.querySelector("#currentHumidity").innerHTML =
+        `Humidity:&nbsp;<span>${weatherObject.current.humidity}</span>%`;
 
     // output wind speed and direction in a combined string
     let windspeed = weatherObject.current.wind_mph;
     let winddirection = weatherObject.current.wind_dir;
-    document.querySelector("#currentWind").innerHTML = windspeed + "mph " + winddirection;
+    document.querySelector("#currentWind").innerHTML =
+        `Wind: ${windspeed} mph <span class="windArrow">➤</span> ${winddirection}`;
 
     // find all future day blocks and loop through them, matching the forecast days in the weather object
     let futureDays = document.querySelectorAll(".futureDay");
     for (let i = 0; i < futureDays.length; i++) {
 
         // update future temp
-        futureDays[i].querySelector(".futureTemp span").innerHTML = weatherObject.forecast.forecastday[i].day.maxtemp_f;
+        futureDays[i].querySelector(".futureTemp span").innerHTML =
+            weatherObject.forecast.forecastday[i].day.maxtemp_f;
 
         // update future windspeed
         windspeed = weatherObject.forecast.forecastday[i].day.maxwind_mph;
-        futureDays[i].querySelector(".futureWind").innerHTML = windspeed + "mph";
+        futureDays[i].querySelector(".futureWind").innerHTML = windspeed + " mph";
 
         // update future condition status
-        futureDays[i].querySelector(".futureStatus").innerHTML = weatherObject.forecast.forecastday[i].day.condition.text;
+        let condition = weatherObject.forecast.forecastday[i].day.condition;
+
+        futureDays[i].querySelector(".futureStatus").innerHTML =
+            `<img src="${condition.icon}" class="weatherIcon"> ${condition.text}`;
     }
 }
 
 
 // wait for DOM to load
 document.addEventListener("DOMContentLoaded", function () {
+
     scrollingBox = document.querySelector("#futureInfo");
     isMoving = false;
 
@@ -103,8 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let weatherLookupURL = weatherUrl + result.ip;
         console.log(weatherLookupURL);
 
-        // use the resulting IP number to look up weather
-        getData(weatherUrl, weatherOptions).then(function (weatherResult) {
+        getData(weatherLookupURL, weatherOptions).then(function (weatherResult) {
+
             console.log(weatherResult);
             updateWeather(weatherResult);
         });
@@ -117,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle("showModal");
     });
 
-    document.querySelector("#locationForm").addEventListener("submit", function(){
+    document.querySelector("#locationForm").addEventListener("submit", function (event) {
 
         // stop form from submitting to server
         event.preventDefault();
@@ -125,18 +137,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle("showModal");
         let newLocation = document.querySelector("#locationBox").value;
 
-        //adding the passes value to the weather URL for lookup
+        // adding the passed value to the weather URL for lookup
         let weatherLookupURL = weatherUrl + newLocation;
         console.log(weatherLookupURL);
 
-        // use the resulting IP number to look up weather
+        // use the resulting location to look up weather
         getData(weatherLookupURL, weatherOptions).then(function (weatherResult) {
             console.log(weatherResult);
             updateWeather(weatherResult);
         });
     });
-
-
-
 
 });
