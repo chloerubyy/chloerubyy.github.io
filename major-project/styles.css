@@ -1,11 +1,16 @@
 /* styles for recipe app (mobile-first) */
 
+* {
+    box-sizing: border-box;
+}
+
 /* body and global styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     background-color: #f7f5f2;
     color: #333;
+    overflow-x: hidden;
 }
 
 /* header styles */
@@ -53,6 +58,17 @@ button:hover {
     background-color: #5a7a1c;
 }
 
+#backBtn {
+    width: fit-content;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+#backBtn:hover {
+    background-color: #5a7a1c;
+}
+
 /* results section styles */
 #results {
     display: grid;
@@ -87,8 +103,68 @@ button:hover {
     line-height: 1.5;
 }
 
+/* detail view styles */
+.detail-view {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.recipe-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.recipe-detail h2 {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.recipe-detail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.recipe-detail p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
 /* responsive styles for desktop */
+
+/* tablet: 2 columns */
+@media (min-width: 600px) {
+    #results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* desktop detail view styling */
+@media (min-width: 800px) {
+    .detail-view {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .recipe-detail img {
+        height: 250px; 
+    }
+}
+
+/* desktop: 3 columns */
 @media (min-width: 900px) {
+    #results {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .recipe-card {
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -97,17 +173,5 @@ button:hover {
     .recipe-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-    }
-}
-
-@media (min-width: 600px) {
-    #results {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 900px) {
-    #results {
-        grid-template-columns: repeat(3, 1fr);
     }
 }

@@ -74,6 +74,7 @@ function displayMealDetails(meal) {
 
     // Back button
     document.getElementById("backBtn").addEventListener("click", () => {
+        results.classList.remove("detail-view");
         results.innerHTML = "";
     });
 }
