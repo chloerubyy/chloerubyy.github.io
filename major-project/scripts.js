@@ -65,14 +65,21 @@ function fetchMealDetails(id) {
 
 // Display full recipe details
 function displayMealDetails(meal) {
-    results.innerHTML = `
+    results.innerHTML = "";
+    results.classList.add("detail-view");
+
+    const detail = document.createElement("div");
+    detail.classList.add("recipe-detail");
+
+    detail.innerHTML = `
         <button id="backBtn">← Back</button>
         <h2>${meal.strMeal}</h2>
         <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <p>${meal.strInstructions}</p>
     `;
 
-    // Back button
+    results.appendChild(detail);
+
     document.getElementById("backBtn").addEventListener("click", () => {
         results.classList.remove("detail-view");
         results.innerHTML = "";
