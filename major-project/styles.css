@@ -145,7 +145,22 @@ button:hover {
     line-height: 1.8;
     max-width: 900px;
     margin: 0 auto;
-    white-space: pre-line;
+    line-height: 1;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.ingredients-list li {
+    background: #fff;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
 }
 
 /* responsive styles for desktop */

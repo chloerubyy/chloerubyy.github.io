@@ -1,5 +1,8 @@
 /* javascript for recipe app */
 
+// Store last search term for back button functionality
+let lastSearch = "";
+
 // Get DOM elements
 const searchBtn = document.getElementById("searchBtn");
 const results = document.getElementById("results");
@@ -13,17 +16,24 @@ searchBtn.addEventListener("click", () => {
         return;
     }
 
+    lastSearch = ingredient;
     fetchRecipes(ingredient);
+    document.getElementById("ingredientInput").value = "";
 });
 
 // Fetch recipes based on ingredient
 function fetchRecipes(ingredient) {
+    results.innerHTML = "<p>Loading recipes...</p>";
+
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
         .then(response => response.json())
         .then(data => {
             displayRecipes(data.meals);
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => {
+            console.error("Error:", error);
+            results.innerHTML = "<p>Something went wrong. Try again.</p>";
+        });
 }
 
 // Display recipe cards
@@ -31,7 +41,7 @@ function displayRecipes(meals) {
     results.innerHTML = "";
 
     if (!meals) {
-        results.innerHTML = "<p>No recipes found.</p>";
+        results.innerHTML = "<p>No recipes found. Try another ingredient.</p>";
         return;
     }
 
@@ -71,17 +81,35 @@ function displayMealDetails(meal) {
     const detail = document.createElement("div");
     detail.classList.add("recipe-detail");
 
+    let ingredients = "";
+
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`];
+        const measure = meal[`strMeasure${i}`];
+
+        if (ingredient && ingredient.trim() !== "") {
+            ingredients += `<li>${measure} ${ingredient}</li>`;
+        }
+    }
+
     detail.innerHTML = `
-        <button id="backBtn">← Back</button>
-        <h2>${meal.strMeal}</h2>
-        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-        <p>${meal.strInstructions}</p>
-    `;
+    <button id="backBtn">← Back</button>
+    <h2>${meal.strMeal}</h2>
+    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+
+    <h3>Ingredients</h3>
+    <ul class="ingredients-list">
+        ${ingredients}
+    </ul>
+
+    <h3>Instructions</h3>
+    <p>${meal.strInstructions.replace(/\n/g, "<br><br>")}</p>
+`;
 
     results.appendChild(detail);
 
     document.getElementById("backBtn").addEventListener("click", () => {
         results.classList.remove("detail-view");
-        results.innerHTML = "";
+        fetchRecipes(lastSearch);
     });
 }
