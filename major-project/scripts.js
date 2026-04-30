@@ -21,9 +21,26 @@ searchBtn.addEventListener("click", () => {
     document.getElementById("ingredientInput").value = "";
 });
 
+document.getElementById("randomBtn").addEventListener("click", () => {
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+        .then(res => res.json())
+        .then(data => displayMealDetails(data.meals[0]));
+});
+
+// Allow Enter key to trigger search
+document.getElementById("ingredientInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        searchBtn.click();
+    }
+});
+
 // Fetch recipes based on ingredient
 function fetchRecipes(ingredient) {
-    results.innerHTML = "<p>Loading recipes...</p>";
+    results.innerHTML = `
+    <div class="loading">
+        <p>Finding recipes...</p>
+    </div>
+`;
 
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
         .then(response => response.json())
@@ -38,7 +55,7 @@ function fetchRecipes(ingredient) {
 
 // Display recipe cards
 function displayRecipes(meals) {
-    results.innerHTML = "";
+    results.innerHTML = `<p class="search-title">Results for "${lastSearch}"</p>`;
 
     if (!meals) {
         results.innerHTML = "<p>No recipes found. Try another ingredient.</p>";
@@ -50,9 +67,10 @@ function displayRecipes(meals) {
         card.classList.add("recipe-card");
 
         card.innerHTML = `
-            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-            <h3>${meal.strMeal}</h3>
-        `;
+    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+    <h3>${meal.strMeal}</h3>
+    <p class="click-hint">Tap to view recipe</p>
+`;
 
         // Click event to fetch and display full recipe details
         card.addEventListener("click", () => {
