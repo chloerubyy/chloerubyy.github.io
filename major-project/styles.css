@@ -11,22 +11,31 @@ body {
     background-color: #f7f5f2;
     color: #333;
     overflow-x: hidden;
+    padding-top: 30px;
 }
 
 /* header styles */
 header {
     text-align: center;
-    padding: 20px 15px;
+    padding: 50px 15px 20px;
 }
 
 header h1 {
     font-size: 1.8rem;
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 header p {
     font-size: 0.9rem;
     color: #777;
+}
+
+.header-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 6px;
 }
 
 /* search section styles */
@@ -195,7 +204,7 @@ button:hover {
     color: #555;
 }
 
-/* responsive styles for desktop */
+/* responsive styles for desktop and tablet */
 
 /* tablet: 2 columns */
 @media (min-width: 600px) {
