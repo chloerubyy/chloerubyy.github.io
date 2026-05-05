@@ -1,4 +1,4 @@
-/* styles for repository homepage from TP2*/
+/* styles for revised repository from TP14 mobile-first*/
 
 /* simple box sizing*/
 * {
@@ -9,11 +9,11 @@
 
 /* styling for the body*/
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-    padding: 20px;
+    padding: 15px;
 }
 
 /* header styles */
@@ -35,8 +35,9 @@ header h1 {
 section {
     background-color: #ffffff;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
 }
 
 /* section headings */
@@ -49,13 +50,17 @@ h2 {
 
 /* paragraph styles */
 p {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #444;
 }
 
 /* link styles */
 a {
-    color: #3d31ca;
+    color: #805e20;
     text-decoration: none;
+    display: inline-block;
+    padding: 4px 0;
+    font-weight: 500;
 }
 
 a:hover {
@@ -79,31 +84,10 @@ img {
 /* block styles and fun sections */
 main {
     display: flex;
-    flex-wrap: wrap;          
-    gap: 20px;                
-}
-
-#courseworkLinks,
-#randomQuestion,
-#boringFact,
-#slangThatNeedsToGo {
-    flex: 1 1 48%;            
-    min-width: 250px;          
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    display: flex;             
-    flex-direction: column;    
-}
-
-@media (max-width: 700px) {
-    #courseworkLinks,
-    #randomQuestion,
-    #boringFact,
-    #slangThatNeedsToGo {
-        flex: 1 1 100%;  
-    }
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 /* block hover effect */
@@ -113,15 +97,45 @@ main {
 #slangThatNeedsToGo,
 #interestingArticle,
 #coolPic {
-    transition: box-shadow 0.3s ease, transform 0.3s ease; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-#courseworkLinks:hover,
-#randomQuestion:hover,
-#boringFact:hover,
-#slangThatNeedsToGo:hover,
-#interestingArticle:hover,
-#coolPic:hover {
-    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.6); 
-    transform: translateY(-5px); 
+/* add hover effect to sections */
+section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+/* responsive design for desktop */
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    section {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (min-width: 1100px) {
+    section {
+        flex: 1 1 calc(33.333% - 14px);
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 30px;
+    }
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
 }
